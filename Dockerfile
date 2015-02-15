@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Update base image
 RUN sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list
 RUN apt-get update -y
-RUN apt-get upgrade -y
+#RUN apt-get upgrade -y
 
 # Install build tools
 RUN apt-get install -y \
