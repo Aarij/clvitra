@@ -10,7 +10,8 @@ RUN apt-get upgrade -y
 
 # Install build tools
 RUN apt-get install -y \
-                     openjdk-7-jdk
+                     openjdk-7-jdk \
+                     wget
 
 # Set jdk7 as the default JDK
 RUN ln -fs /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java /etc/alternatives/java
@@ -18,16 +19,18 @@ RUN ln -fs /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java /etc/alternatives/java
 # Install Tomcat Server
 
 # Create installation directory
-RUN mkdir /mnt/dockerdemo 
-RUN mkdir /mnt/dockerdemo/server 
-RUN mkdir /mnt/dockerdemo/server/tomcat
+RUN mkdir /dockerdemo 
+RUN mkdir /dockerdemo/server 
+RUN mkdir /dockerdemo/server/tomcat
 
 # Download Tomcat Server
-RUN wget http://mirror.netcologne.de/apache.org/tomcat/tomcat-8/v8.0.18/bin/apache-tomcat-8.0.18.tar.gz -O  /mnt/tempdircopy/apache-tomcat-8.0.18.tar.gz
-RUN tar -zxvf /mnt/tempdircopy/apache-tomcat-8.0.18.tar.gz -C /mnt/tempdircopy
+RUN wget http://mirror.netcologne.de/apache.org/tomcat/tomcat-8/v8.0.18/bin/apache-tomcat-8.0.18.tar.gz -O  /tempdircopy/apache-tomcat-8.0.18.tar.gz
+RUN tar -zxvf /tempdircopy/apache-tomcat-8.0.18.tar.gz -C /tempdircopy
 
 # Copy the tomcat to the right location
-RUN cp -r /mnt/tempdircopy/apache-tomcat-8.0.18/* /mnt/dockerdemo/server/tomcat
+RUN cp -r /tempdircopy/apache-tomcat-8.0.18/* /dockerdemo/server/tomcat
+
+
 
 # Start Tomcat Server
-RUN sh /mnt/docker/server/tomcat/bin/startup.sh
+RUN sh /docker/server/tomcat/bin/startup.sh
