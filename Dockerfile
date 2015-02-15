@@ -33,4 +33,4 @@ RUN cp -r /tempdircopy/apache-tomcat-8.0.18/* /dockerdemo/server/tomcat
 
 
 # Start Tomcat Server
-RUN sh /docker/server/tomcat/bin/startup.sh
+RUN sh /dockerdemo/server/tomcat/bin/startup.sh
