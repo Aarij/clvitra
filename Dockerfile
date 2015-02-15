@@ -22,7 +22,7 @@ RUN ln -fs /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java /etc/alternatives/java
 RUN mkdir /dockerdemo 
 RUN mkdir /dockerdemo/server 
 RUN mkdir /dockerdemo/server/tomcat
-
+RUN mkdir /tempdircopy
 # Download Tomcat Server
 RUN wget http://mirror.netcologne.de/apache.org/tomcat/tomcat-8/v8.0.18/bin/apache-tomcat-8.0.18.tar.gz -O  /tempdircopy/apache-tomcat-8.0.18.tar.gz
 RUN tar -zxvf /tempdircopy/apache-tomcat-8.0.18.tar.gz -C /tempdircopy
