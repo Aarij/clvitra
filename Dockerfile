@@ -20,19 +20,19 @@ RUN ln -fs /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java /etc/alternatives/java
 
 # Create installation directory
 RUN mkdir /dockerdemo 
-RUN mkdir /dockerdemo/server 
-RUN mkdir /dockerdemo/server/tomcat
-RUN mkdir /tempdircopy
+                     mkdir /dockerdemo/server 
+                     mkdir /dockerdemo/server/tomcat
+                     mkdir /tempdircopy
 # Download Tomcat Server
-RUN wget http://mirror.netcologne.de/apache.org/tomcat/tomcat-8/v8.0.18/bin/apache-tomcat-8.0.18.tar.gz -O  /tempdircopy/apache-tomcat-8.0.18.tar.gz
-RUN tar -zxvf /tempdircopy/apache-tomcat-8.0.18.tar.gz -C /tempdircopy
+CMD wget http://mirror.netcologne.de/apache.org/tomcat/tomcat-8/v8.0.18/bin/apache-tomcat-8.0.18.tar.gz -O  /tempdircopy/apache-tomcat-8.0.18.tar.gz
 
-# Copy the tomcat to the right location
-RUN cp -r /tempdircopy/apache-tomcat-8.0.18/* /dockerdemo/server/tomcat
+                     tar -zxvf /tempdircopy/apache-tomcat-8.0.18.tar.gz -C /tempdircopy
 
+                     # Copy the tomcat to the right location
+                     cp -r /tempdircopy/apache-tomcat-8.0.18/* /dockerdemo/server/tomcat
 
+                     # Start Tomcat Server
+                     RUN sh /dockerdemo/server/tomcat/bin/startup.sh
 
-# Start Tomcat Server
-RUN sh /dockerdemo/server/tomcat/bin/startup.sh
 EXPOSE 8080
 
